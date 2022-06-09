@@ -1,4 +1,4 @@
-package exercise1.thread1;
+package part1Threads.thread1;
 
 public class Race {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package exercise1.thread4;
+package part1Threads.thread4;
 
 import java.util.HashMap;
 

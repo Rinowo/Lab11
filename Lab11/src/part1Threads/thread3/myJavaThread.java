@@ -1,4 +1,4 @@
-package exercise1.thread3;
+package part1Threads.thread3;
 
 public class myJavaThread {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package exercise1.thread2;
+package part1Threads.thread2;
 
 public class MyJavaThread extends Thread{
     int finish;

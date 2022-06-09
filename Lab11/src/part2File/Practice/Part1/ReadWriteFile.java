@@ -1,4 +1,4 @@
-package exercise2.Practice.Part1;
+package part2File.Practice.Part1;
 
 import java.io.BufferedInputStream;
 import java.io.File;

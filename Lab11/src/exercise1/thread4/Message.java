@@ -1,27 +1,31 @@
 package exercise1.thread4;
 
+import java.util.HashMap;
+
 public class Message extends Thread {
     String message;
-
-    String priority;
     int timeout;
 
+    int priority;
 
-
-    public Message(String message, String priority, int timeout) {
+    public Message(String message, int timeout, int priority) {
         this.message = message;
-        this.priority = priority;
         this.timeout = timeout;
+        this.priority = priority;
     }
+
+    HashMap<Integer, String> hashMap = new HashMap<Integer, String>();
 
     @Override
     public void run() {
         for (int i = 0; i < 3; i++) {
             System.out.println(message);
             try {
-                Integer intPriority = Integer.valueOf(priority);
-                Thread.currentThread().getPriority(intPriority).sleep(timeout);
+                Thread.currentThread().getPriority();
+                Thread.sleep(timeout);
+
             } catch (Exception e) {}
         }
     }
 }
+

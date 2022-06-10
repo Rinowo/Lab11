@@ -25,18 +25,14 @@ public class StudentList {
     }
 
     public void inputStudent() {
-        System.out.print("Enter student ID: "); String id = sc.nextLine();
-        System.out.print("Enter student name: "); String name = sc.nextLine();
-        System.out.print("Enter student mark: "); double mark = sc.nextDouble();
+        System.out.print("Enter student ID: ");
+        String id = sc.nextLine();
+        System.out.print("Enter student name: ");
+        String name = sc.nextLine();
+        System.out.print("Enter student mark: ");
+        double mark = sc.nextDouble();
         part2File.Exercise.Exercise2.Student student = new part2File.Exercise.Exercise2.Student(id, name, mark);
         addStudent(student);
-    }
-
-    public void printStudent() {
-        for (Student student :
-                list) {
-            System.out.println(student);
-        }
     }
 
     public void writeFile() throws IOException {
@@ -49,100 +45,12 @@ public class StudentList {
     public void readFile() throws FileNotFoundException {
         Gson gson = new Gson();
         FileReader reader = new FileReader("StudentList.json");
-        list = new Gson().fromJson(reader, new TypeToken<List<Student>>(){}.getType());
+        list = new Gson().fromJson(reader, new TypeToken<List<Student>>() {
+        }.getType());
 
         for (Student student :
                 list) {
             System.out.println(student);
         }
-    }
-
-    public void findByName() {
-        System.out.print("Enter name to find: "); String name = sc.nextLine();
-        File file = new File("StudentList.json");
-        Student student = new Student(name);
-        Scanner scanner;
-        try {
-            scanner = new Scanner(file).useDelimiter(",");
-
-            while (scanner.hasNext()) {
-                final String lineFromFile = scanner.nextLine();
-                if (lineFromFile.contains(name)) {
-                    System.err.println("I Found " + name);
-                    break;
-                }
-            }
-        } catch (IOException e) {
-            System.out.println("Cannot write to file: " + file.toString());
-        }
-    }
-
-    public void findById() {
-        System.out.print("Enter id to find: "); String id = sc.nextLine();
-        File file = new File("StudentList.json");
-        Student student = new Student(id);
-        Scanner scanner;
-        try {
-            scanner = new Scanner(file).useDelimiter(",");
-
-            while (scanner.hasNext()) {
-                final String lineFromFile = scanner.nextLine();
-                if (lineFromFile.contains(id)) {
-                    System.out.println();
-                    System.err.println("I Found " + id);
-                    break;
-                }
-            }
-        } catch (IOException e) {
-            System.out.println("Cannot write to file: " + file.toString());
-        }
-    }
-
-    public void sortMark() throws FileNotFoundException {
-        readFile();
-        Collections.sort(list, new Comparator<Student>() {
-            @Override
-            public int compare(Student o1, Student o2) {
-                if(o1.getMark() > o2.getMark()) {
-                    return -1;
-                } else if (o1.getMark() < o2.getMark()) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            }
-        });
-    }
-
-    public void removeById() {
-        System.out.print("Enter id to remove: "); String id = sc.nextLine();
-        File file = new File("StudentList.json");
-        Student student = new Student(id);
-        Scanner scanner;
-        try {
-            scanner = new Scanner(file).useDelimiter(",");
-
-            while (scanner.hasNext()) {
-                final String lineFromFile = scanner.nextLine();
-                if (lineFromFile.contains(id)) {
-                    re(student);
-                    break;
-                }
-            }
-        } catch (IOException e) {
-            System.out.println("Cannot write to file: " + file.toString());
-        }
-    }
-
-    public void remove() throws FileNotFoundException {
-        readFile();
-        System.out.print("Enter id to remove: "); String id = sc.nextLine();
-        Student student = new Student(id);
-        re(student);
-        printStudent();
-    }
-
-    public boolean re(Student student) {
-        return this.list.remove(student);
     }
 }

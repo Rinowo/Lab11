@@ -5,9 +5,7 @@ import com.google.gson.Gson;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -56,6 +54,56 @@ public class StudentList {
         for (Student student :
                 list) {
             System.out.println(student);
+        }
+    }
+
+    public void findByName() {
+        System.out.print("Enter name to find: "); String name = sc.nextLine();
+        File file = new File("StudentList.json");
+        Student student = new Student(name);
+        Scanner scanner;
+        try {
+            scanner = new Scanner(file).useDelimiter(",");
+
+            while (scanner.hasNext()) {
+                final String lineFromFile = scanner.nextLine();
+                if (lineFromFile.contains(name)) {
+                    System.err.println("I Found " + name);
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Cannot write to file: " + file.toString());
+        }
+    }
+
+    public void findById() {
+        System.out.print("Enter id to find: "); String id = sc.nextLine();
+        File file = new File("StudentList.json");
+        Student student = new Student(id);
+        Scanner scanner;
+        try {
+            scanner = new Scanner(file).useDelimiter(",");
+
+            while (scanner.hasNext()) {
+                final String lineFromFile = scanner.nextLine();
+                if (lineFromFile.contains(id)) {
+                    System.err.println("I Found " + id);
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Cannot write to file: " + file.toString());
+        }
+    }
+
+    public void sortMark() {
+        File file = new File("StudentList.json");
+        if (file.isDirectory()) {
+            List listFile = Arrays.asList(file.list());
+            Collections.sort(listFile, new Comparator<Student>() {
+
+            });
         }
     }
 }

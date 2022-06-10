@@ -11,6 +11,10 @@ public class Student {
         this.mark = mark;
     }
 
+    public Student(String name) {
+
+    }
+
     public String getId() {
         return id;
     }

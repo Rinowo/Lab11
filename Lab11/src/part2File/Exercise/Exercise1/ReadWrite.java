@@ -12,10 +12,11 @@ public class ReadWrite {
             FileInputStream fis = new FileInputStream(f);
             BufferedInputStream bis = new BufferedInputStream(fis);
             int i;
+
             while ((i = bis.read()) != -1) {
-                if (((char) i) == 'a' ) {
-                    System.out.println();
-                }
+                String content = new String();
+                System.out.print((char) i);
+
             }
             System.out.println();
             fis.close();
